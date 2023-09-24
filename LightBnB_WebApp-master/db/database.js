@@ -122,8 +122,6 @@ const addProperty = function (property) {
 };
 
 
-getAllReservations(1, 7);
-
 module.exports = {
   getUserWithEmail,
   getUserWithId,
