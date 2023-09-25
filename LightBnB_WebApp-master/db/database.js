@@ -20,7 +20,6 @@ const pool = new Pool({
 const getUserWithEmail = function (email) {
   return pool.query(`SELECT * FROM users WHERE email = $1`, [email])
   .then((result) => {
-    console.log(result.rows[0]);
       return result.rows[0];
     })
     .catch((err) => {
@@ -79,7 +78,6 @@ GROUP BY reservations.id, properties.title, properties.cost_per_night, reservati
 ORDER BY reservations.start_date
 LIMIT $2;`, [guest_id, limit])
 .then((result) => {
-  console.log(result.rows);
       return result.rows;
     })
   .catch((err) => {
@@ -145,12 +143,8 @@ const getAllProperties = function(options, limit = 10) {
     LIMIT $${queryParams.length};
   `;
 
-  // Console log to ensure correctness
-  console.log(queryString, queryParams);
-
   // Execute the query
   return pool.query(queryString, queryParams).then((res) => {
-console.log(res.rows);
     return res.rows
   });
 };
